@@ -10,6 +10,7 @@ body {
     background: linear-gradient(to bottom, #e5f0ff, #ffffff);
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -25,6 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 60px 0;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -39,6 +41,17 @@ body {
 .logo-img {
     height: 60px;
     margin-right: 14px;
+    background-color: white;
+    padding: 6px;
+    border-radius: 12px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .navbar ul {
@@ -46,6 +59,8 @@ body {
     display: flex;
     gap: 42px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .navbar ul li a {
@@ -56,26 +71,20 @@ body {
     font-size: 20px;
 }
 
-.navbar {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-}
-
-.navbar ul {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+.navbar ul li a:hover {
+    color: #0081e7;
 }
 
 .btn {
+    background-color: #6bad34;
     color: white !important;
-    font-size: 18px;
-    padding: 14px 28px;
-    text-align: center;
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
     display: inline-block;
+    text-align: center;
 }
 
 /* Hero */
@@ -242,20 +251,13 @@ body {
 
 .ai-container {
     display: flex;
-    gap: 60px;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.ai-image {
-    flex: 1;
-    max-width: 480px;
-    text-align: center;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .ai-image img {
     width: 100%;
+    max-width: 480px;
     border-radius: 30px;
     object-fit: contain;
 }
@@ -272,14 +274,16 @@ body {
 }
 
 .ai-features {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-    gap: 28px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
     margin-top: 40px;
 }
 
 .ai-features li {
+    flex: 1 1 calc(25% - 40px);
+    max-width: calc(25% - 40px);
     font-size: 18px;
     color: #444;
     list-style: none;
@@ -303,91 +307,10 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .ai-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .ai-image,
-    .ai-text {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
-    .ai-features {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, auto);
-    }
-
     .ai-features li {
-        padding-left: 40px;
+        flex: 1 1 calc(50% - 28px);
+        max-width: calc(50% - 28px);
     }
-}
-
-/* Footer */
-footer {
-    background-color: #0081e7;
-    color: #ffffff;
-    padding: 80px 6%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 60px;
-    font-size: 16px;
-    margin-top: 120px;
-    border-top: 2px solid #0081e7;
-}
-
-footer h4 {
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    border-bottom: 2px solid #ffffff;
-    padding-bottom: 8px;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    margin-bottom: 12px;
-}
-
-footer ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    transition: color 0.3s ease;
-}
-
-footer ul li a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-footer .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    text-align: center;
-}
-
-footer .logo img {
-    height: 120px;
-    background-color: white;
-    padding: 12px;
-    border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-footer .logo p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #ffffff;
-    max-width: 280px;
 }
 
 @media (max-width: 768px) {
@@ -405,9 +328,18 @@ footer .logo p {
         grid-template-columns: 1fr;
     }
 
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
     .navbar ul {
         flex-direction: column;
         gap: 12px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
 
     .logo {
@@ -436,5 +368,24 @@ footer .logo p {
         text-align: center;
     }
 
+    footer .logo {
+        align-items: center;
+    }
+
+    footer .logo p {
+        max-width: 100%;
+    }
 }
+
+@media (max-width: 600px) {
+    .ai-features {
+        flex-direction: column;
+    }
+
+    .ai-features li {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
 
