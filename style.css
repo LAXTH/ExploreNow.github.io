@@ -56,18 +56,26 @@ body {
     font-size: 20px;
 }
 
-.navbar ul li a:hover {
-    color: #0081e7;
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.navbar ul {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn {
-    background-color: #6bad34;
-    color: white !important; 
-    padding: 18px 32px;
-    border-radius: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 20px;
+    color: white !important;
+    font-size: 18px;
+    padding: 14px 28px;
+    text-align: center;
+    display: inline-block;
 }
 
 /* Hero */
@@ -429,3 +437,4 @@ footer .logo p {
     }
 
 }
+
