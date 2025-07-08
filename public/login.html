@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Iniciar sesión | Explore Now</title>
+  <link rel="stylesheet" href="assets/styles/style.css" />
+  <style>
+    .auth {max-width:380px;margin:4rem auto;padding:2rem;border:1px solid #ccc;border-radius:1rem}
+    .auth h1{margin-bottom:1rem;text-align:center}
+    .auth label{display:block;margin-top:1rem;font-weight:600}
+    .auth input{width:100%;padding:.6rem;border:1px solid #bbb;border-radius:.5rem;margin-top:.4rem}
+    .auth button{width:100%;margin-top:1.5rem;padding:.7rem;border:none;border-radius:.5rem;font-weight:600;cursor:pointer}
+    .msg{margin-top:1rem;text-align:center;font-size:.9rem;color:#d00;min-height:1.2em}
+  </style>
+</head>
+<body>
+<main class="auth">
+  <h1>Login</h1>
+  <form id="login-form" novalidate>
+    <label>Email
+      <input type="email" id="email" required placeholder="correo@ejemplo.com" />
+    </label>
+    <label>Contraseña
+      <input type="password" id="pass" required minlength="3" />
+    </label>
+    <button id="btn">Entrar</button>
+    <div id="msg" class="msg"></div>
+  </form>
+</main>
+
+<script type="module">
+  import { login } from "assets/scripts/auth.js";
+
+  const form = document.getElementById("login-form");
+  const msg  = document.getElementById("msg");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    // Marca la sesión en localStorage (solo demo)
+    login(document.getElementById("email").value.trim());
+    // Redirige al destino guardado
+    const next = new URLSearchParams(location.search).get("next") || "index.html";
+    location.replace(next);
+  });
+</script>
+</body>
+</html>
+
